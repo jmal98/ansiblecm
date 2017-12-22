@@ -11,6 +11,7 @@ RUN yum -y install \
 		openssl-devel-1.0.2k \
 		python-devel-2.7.5 \
 		python-setuptools-0.9.8 \
+		python2-cryptography-1.7.2 \
 		PyYAML-3.10 \
 		tar-1.26 && \
 	easy_install \
