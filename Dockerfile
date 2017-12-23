@@ -1,28 +1,32 @@
-FROM centos:7.3.1611
+FROM alpine:3.7
 
-RUN yum -y install \
-		bzip2-1.0.6 \
-		file-5.11 \
-		gcc-4.8.5 \
-		gzip-1.5.9 \
-		libffi-3.0.13 \
-		libffi-devel-3.0.13 \
-		make-3.82 \
-		openssl-devel-1.0.2k \
-		python-devel-2.7.5 \
-		python-setuptools-0.9.8 \
-		python2-cryptography-1.7.2 \
-		PyYAML-3.10 \
-		tar-1.26 && \
-	easy_install \
-		ansible==2.3.2.0 \
+RUN apk add --no-cache \
+		bzip2=1.0.6-r6 \
+		file=5.32-r0 \
+		gzip=1.8-r0 \
+		libffi=3.2.1-r4 \
+		libffi-dev=3.2.1-r4 \
+		musl-dev=1.1.18-r2 \
+		openssl-dev=1.0.2n-r0 \
+		python-dev=2.7.14-r2 \
+		py-cffi=1.10.0-r0 \
+		py-cryptography=2.0.3-r1 \
+		py-pip=9.0.1-r1 \
+		py-setuptools=33.1.1-r1 \
+		py-yaml=3.12-r1 \
+		tar=1.29-r1 \
+		&& \
+    apk add --no-cache --virtual build-dependencies \		
+		gcc=6.4.0-r5 \		
+		make=4.2.1-r0 \
+	    && \
+	pip install \
+		ansible==2.4.2.0 \
 		botocore==1.7.10 \
 		boto==2.48.0 \
-		boto3==1.4.7 && \
-	yum -y remove \
-		gcc \
-		make && \
-	yum -y clean all
+		boto3==1.4.7 \
+		&& \
+	apk del build-dependencies
 
 VOLUME ["/tmp/playbook"]
 
