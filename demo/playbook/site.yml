@@ -1,0 +1,13 @@
+---
+- hosts: db
+  roles:
+    - db
+  become: true
+  remote_user: centos
+
+- hosts: web
+  roles:
+    - web
+  become: true
+  remote_user: centos
+  

@@ -1,0 +1,21 @@
+---
+  - copy:
+      src: mongodb-org-3.2.repo
+      dest: /etc/yum.repos.d/mongodb-org-3.2.repo
+      mode: 0644
+      owner: root
+      group: root
+  
+  - yum:
+      name: mongodb-org-server-3.2.0
+      state: present
+      
+  - replace:
+      path: /etc/mongod.conf
+      regexp: 'bindIp: 127.0.0.1'
+      replace: '#bindIp: 127.0.0.1'
+      backup: no
+  
+  # Container does not have systemd so just start mongo manually
+  - shell: /usr/bin/mongod -f /etc/mongod.conf 
+    ignore_errors: yes

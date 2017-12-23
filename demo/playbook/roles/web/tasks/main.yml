@@ -1,0 +1,3 @@
+---
+  - name: Setting up the Web server
+    command: echo "do work son!"
