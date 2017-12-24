@@ -42,7 +42,12 @@
     args:
       creates: /opt/jetty-distribution-9.4.8.v20171121/webapps/ROOT
       
-  - shell: chown -R root:root /opt/jetty*         
+  - file:
+      path: /opt/jetty-distribution-9.4.8.v20171121
+      owner: root
+      group: root
+      state: directory
+      recurse: yes
       
   - shell: nohup /opt/jetty-distribution-9.4.8.v20171121/bin/jetty.sh start &
     args:

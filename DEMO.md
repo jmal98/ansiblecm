@@ -60,7 +60,7 @@ this could take 5 minutes or so.  Again, the execution of the playbook will prom
 docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.4.2.0 site.yml -i inventory/hosts -k
 ```
 
-If all goes well, web machine will be running a web server, which is accessible via their exposed host ports.
+If all goes well the web machines will be running a web server, which is accessible via their exposed host ports.
 
 * web1: [http://localhost:8080](http://localhost:8080)
 * web1: [http://localhost:8081](http://localhost:8081)
@@ -73,7 +73,7 @@ That's it.  You just used the control machine to install a typical web stack wit
 with the playbook and iterate changes on the machines. 
 
 
-When your ready to shutdown the machines:
+When you're ready to shutdown the machines:
 
 ```bash
 docker rm -fv web1 web2 web3 db1
