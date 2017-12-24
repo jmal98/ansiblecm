@@ -41,7 +41,7 @@ docker run -it --rm -v $PWD:/tmp/playbook:Z jmal98/ansiblecm:2.4.2.0 site.yml -i
 ```
 
 
-This control machine is also useful for running Ansible ["one liners"](http://docs.ansible.com/ansible/latest/intro_adhoc.html) which do not require a playbook.  The example below runs the setup module on the web machines as specified in the inventory file.
+This control machine is also useful for running Ansible "[one liners](http://docs.ansible.com/ansible/latest/intro_adhoc.html)" which do not require a playbook.  The example below runs the setup module on the web machines as specified in the inventory file.
 
 ```bash
 docker run -it --rm --entrypoint ansible jmal98/ansiblecm:2.4.2.0 web -m setup -i inventory

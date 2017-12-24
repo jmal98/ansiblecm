@@ -63,8 +63,8 @@ docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.4.2
 If all goes well, web machine will be running a web server, which is accessible via their exposed host ports.
 
 * web1: [http://localhost:8080](http://localhost:8080)
-* web1: [http://localhost:8081](http://localhost:8082)
-* web1: [http://localhost:8082](http://localhost:8083)
+* web1: [http://localhost:8081](http://localhost:8081)
+* web1: [http://localhost:8082](http://localhost:8082)
 
 Also, MongoDB should be up and it's status should be accessible via it's exposed host port [http://localhost:27017](http://localhost:27017)
 

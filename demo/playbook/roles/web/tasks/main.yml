@@ -1,3 +1,49 @@
 ---
-  - name: Setting up the Web server
-    command: echo "do work son!"
+  - yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - which
+      - java-1.8.0-openjdk-headless
+      
+  
+  - get_url:
+      url: http://central.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.8.v20171121/jetty-distribution-9.4.8.v20171121.tar.gz
+      dest: /opt/jetty-distribution-9.4.8.v20171121.tar.gz
+      mode: 0444
+      owner: root
+      group: root
+      checksum: sha1:0cd41bb662b58b5394b22f6df7873aee4d094d0a
+      
+  - unarchive:
+      src: /opt/jetty-distribution-9.4.8.v20171121.tar.gz
+      dest: /opt/
+      remote_src: yes
+      
+  - lineinfile:
+      path: /etc/default/jetty
+      line: 'JAVA_HOME=/usr/lib/jvm'
+      insertbefore: EOF
+      create: yes
+      mode: 0644
+      owner: root
+      group: root
+      
+  - lineinfile:
+      path: /etc/default/jetty
+      line: 'JETTY_HOME=/opt/jetty-distribution-9.4.8.v20171121'
+      insertbefore: EOF
+      create: yes
+      mode: 0644
+      owner: root
+      group: root
+      
+  - command: /bin/cp -r /opt/jetty-distribution-9.4.8.v20171121/demo-base/webapps/ROOT /opt/jetty-distribution-9.4.8.v20171121/webapps/.
+    args:
+      creates: /opt/jetty-distribution-9.4.8.v20171121/webapps/ROOT
+      
+  - shell: chown -R root:root /opt/jetty*         
+      
+  - shell: nohup /opt/jetty-distribution-9.4.8.v20171121/bin/jetty.sh start &
+    args:
+      chdir: /opt/jetty-distribution-9.4.8.v20171121/
