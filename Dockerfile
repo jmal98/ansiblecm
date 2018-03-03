@@ -6,7 +6,7 @@ RUN apk add --no-cache \
 		gzip=1.8-r0 \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
-		musl-dev=1.1.18-r2 \
+		musl-dev=1.1.18-r3 \
 		openssl-dev=1.0.2n-r0 \
 		python-dev=2.7.14-r2 \
 		py-cffi=1.10.0-r0 \
@@ -21,10 +21,10 @@ RUN apk add --no-cache \
 		make=4.2.1-r0 \
 	    && \
 	pip install \
-		ansible==2.4.2.0 \
-		botocore==1.7.10 \
+		ansible==2.4.3.0 \
+		botocore==1.9.3 \
 		boto==2.48.0 \
-		boto3==1.4.7 \
+		boto3==1.6.3 \
 		&& \
 	apk del build-dependencies
 
