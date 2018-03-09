@@ -25,6 +25,7 @@ RUN apk add --no-cache \
 		botocore==1.9.3 \
 		boto==2.48.0 \
 		boto3==1.6.3 \
+		pywinrm>=0.1.1 \
 		&& \
 	apk del build-dependencies
 
