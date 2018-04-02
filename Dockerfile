@@ -7,7 +7,7 @@ RUN apk add --no-cache \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
 		musl-dev=1.1.18-r3 \
-		openssl-dev=1.0.2n-r0 \
+		openssl-dev=1.0.2o-r0 \
 		python-dev=2.7.14-r2 \
 		py-cffi=1.10.0-r0 \
 		py-cryptography=2.0.3-r1 \
@@ -20,6 +20,7 @@ RUN apk add --no-cache \
 		gcc=6.4.0-r5 \		
 		make=4.2.1-r0 \
 	    && \
+	pip install --upgrade pip==9.0.3 && \
 	pip install \
 		ansible==2.4.3.0 \
 		botocore==1.9.3 \
