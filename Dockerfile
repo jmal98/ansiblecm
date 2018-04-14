@@ -6,8 +6,9 @@ RUN apk add --no-cache \
 		gzip=1.8-r0 \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
+                krb5-dev=1.15.2-r1 \
 		musl-dev=1.1.18-r3 \
-		openssl-dev=1.0.2o-r0 \
+		openssl-dev \
 		python-dev=2.7.14-r2 \
 		py-cffi=1.10.0-r0 \
 		py-cryptography=2.0.3-r1 \
@@ -26,7 +27,7 @@ RUN apk add --no-cache \
 		botocore==1.10.0 \
 		boto==2.48.0 \
 		boto3==1.7.0 \
-		pywinrm==0.3.0 \
+		pywinrm[kerberos]==0.3.0 \
 		&& \
 	apk del build-dependencies
 
