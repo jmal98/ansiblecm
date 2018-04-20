@@ -6,7 +6,9 @@ RUN apk add --no-cache \
 		gzip=1.8-r0 \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
+                krb5=1.15.2-r1 \
                 krb5-dev=1.15.2-r1 \
+                krb5-libs=1.15.2-r1 \
 		musl-dev=1.1.18-r3 \
 		openssl-dev \
 		python-dev=2.7.14-r2 \
