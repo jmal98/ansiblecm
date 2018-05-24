@@ -18,6 +18,8 @@ RUN apk add --no-cache \
 		py-setuptools=33.1.1-r1 \
 		py-yaml=3.12-r1 \
 		tar=1.29-r1 \
+		openssh=7.5_p1-r8 \
+		sshpass=1.06-r0 \
 		&& \
     apk add --no-cache --virtual build-dependencies \		
 		gcc=6.4.0-r5 \		
