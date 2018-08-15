@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+VERSION=2.6.2
+
+if [[ ! -z "$(docker ps -aq)" ]]; then
+   docker rm -fv $(docker ps -aq)
+fi
+docker system prune -af
+
+cd ../
+   docker build --tag ansiblecm:${VERSION} .
+   
+   cd demo/machine
+      docker build --tag machine .
+   cd -
+
+   docker run -d --rm -p 22 -p 8080:8080 --name web1 machine
+   docker run -d --rm -p 22 -p 8081:8080 --name web2 machine
+   docker run -d --rm -p 22 -p 8082:8080 --name web3 machine
+   docker run -d --rm -p 22 -p 27017:27017 --name db1 machine
+
+   docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web1
+   docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web2
+   docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' web3
+   docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' db1
+
+
+   pwd
+   docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z ansiblecm:${VERSION} web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
+
+   docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z ansiblecm:${VERSION} site.yml -i inventory/hosts -k
+
+   docker exec -it web1 java -version
+
+   sleep 6m
+   for p in 8080 8081 8082 27017
+   do
+      echo Checking: http://localhost:${p}/
+      if [ "${p}" != 27017 ]; then
+         curl -I http://localhost:${p}/
+      else
+         curl http://localhost:${p}/
+      fi
+   done
+
+
+   docker rm -fv web1 web2 web3 db1
+cd -
