@@ -6,9 +6,9 @@ RUN apk add --no-cache \
 		gzip=1.9-r0 \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
-        krb5=1.15.3-r0 \
-        krb5-dev=1.15.3-r0 \
-        krb5-libs=1.15.3-r0 \
+		krb5=1.15.3-r0 \
+		krb5-dev=1.15.3-r0 \
+		krb5-libs=1.15.3-r0 \
 		musl-dev=1.1.19-r10 \
 		openssh \
 		openssl-dev \
@@ -22,12 +22,12 @@ RUN apk add --no-cache \
 		tar=1.30-r0 \
 		&& \
     apk add --no-cache --virtual build-dependencies \		
-		gcc=6.4.0-r8 \		
+		gcc=6.4.0-r9 \		
 		make=4.2.1-r2 \
 	    && \
 	pip install --upgrade pip==18.0 && \
 	pip install \
-		ansible==2.6.4 \
+		ansible==2.6.5 \
 		botocore==1.10.77 \
 		boto==2.49.0 \
 		boto3==1.7.77 \
