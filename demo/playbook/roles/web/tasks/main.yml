@@ -1,10 +1,7 @@
 ---
   - yum:
-      name: "{{ item }}"
+      name: ['which','java-1.8.0-openjdk-headless']
       state: present
-    with_items:
-      - which
-      - java-1.8.0-openjdk-headless
       
   
   - get_url:
