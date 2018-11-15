@@ -28,9 +28,9 @@ RUN apk add --no-cache \
 	pip install --upgrade pip==18.0 && \
 	pip install \
 		ansible==2.7.1 \
-		botocore==1.10.77 \
+		botocore==1.12.45 \
 		boto==2.49.0 \
-		boto3==1.7.77 \
+		boto3==1.9.45 \
 		pywinrm[kerberos]==0.3.0 \
 		&& \
 	apk del build-dependencies
