@@ -21,13 +21,13 @@ RUN apk add --no-cache \
 		sshpass=1.06-r0 \
 		tar=1.30-r0 \
 		&& \
-    apk add --no-cache --virtual build-dependencies \		
-		gcc=6.4.0-r9 \		
+    apk add --no-cache --virtual build-dependencies \
+		gcc=6.4.0-r9 \
 		make=4.2.1-r2 \
 	    && \
 	pip install --upgrade pip==18.0 && \
 	pip install \
-		ansible==2.7.1 \
+		ansible==2.7.2 \
 		botocore==1.12.45 \
 		boto==2.49.0 \
 		boto3==1.9.45 \
