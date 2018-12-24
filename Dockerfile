@@ -27,7 +27,7 @@ RUN apk add --no-cache \
 	    && \
 	pip install --upgrade pip==18.0 && \
 	pip install \
-		ansible==2.7.3 \
+		ansible==2.7.4 \
 		botocore==1.12.45 \
 		boto==2.49.0 \
 		boto3==1.9.45 \
