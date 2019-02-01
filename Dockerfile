@@ -1,14 +1,14 @@
 FROM alpine:3.8
 
 RUN apk add --no-cache \
-		bzip2=1.0.6-r6 \
-		file=5.32-r0 \
-		gzip=1.9-r0 \
+		bzip2 \
+		file \
+		gzip \
 		libffi=3.2.1-r4 \
 		libffi-dev=3.2.1-r4 \
-		krb5=1.15.3-r0 \
-		krb5-dev=1.15.3-r0 \
-		krb5-libs=1.15.3-r0 \
+		krb5 \
+		krb5-dev \
+		krb5-libs \
 		musl-dev=1.1.19-r10 \
 		openssh \
 		openssl-dev \
@@ -18,8 +18,8 @@ RUN apk add --no-cache \
 		py2-pip=10.0.1-r0 \
 		py-setuptools=39.1.0-r0 \
 		py2-yaml=3.12-r1 \
-		sshpass=1.06-r0 \
-		tar=1.30-r0 \
+		sshpass \
+		tar \
 		&& \
     apk add --no-cache --virtual build-dependencies \
 		gcc=6.4.0-r9 \
@@ -27,11 +27,11 @@ RUN apk add --no-cache \
 	    && \
 	pip install --upgrade pip==18.0 && \
 	pip install \
-		ansible==2.7.5 \
-		botocore==1.12.45 \
+		ansible==2.7.6 \
+		botocore==1.12.86 \
 		boto==2.49.0 \
-		boto3==1.9.45 \
-		awscli==1.16.55 \
+		boto3==1.9.86 \
+		awscli==1.16.96 \
 		pywinrm[kerberos]==0.3.0 \
 		&& \
 	apk del build-dependencies
