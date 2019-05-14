@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python2-dev=2.7.15-r3 \
+		python2-dev=2.7.16-r1 \
 		py-cffi \
 		py-cryptography=2.4.2-r2 \
 		py2-pip=18.1-r0 \
@@ -26,7 +26,7 @@ RUN apk add --no-cache \
 	    && \
 	pip install --upgrade pip==19.0.3 && \
 	pip install \
-		ansible==2.7.9 \
+		ansible==2.7.10 \
 		botocore==1.12.110 \
 		boto==2.49.0 \
 		boto3==1.9.110 \
