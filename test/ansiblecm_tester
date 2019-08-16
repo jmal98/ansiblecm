@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-VERSION=2.8.2
+VERSION=2.8.3
 
 if [[ ! -z "$(docker ps -aq)" ]]; then
    docker rm -fv $(docker ps -aq)
