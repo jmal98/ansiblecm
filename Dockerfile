@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 RUN apk add --no-cache \
 		bzip2 \
@@ -14,9 +14,9 @@ RUN apk add --no-cache \
 		openssl-dev \
 		python2-dev=2.7.16-r1 \
 		py-cffi \
-		py-cryptography=2.4.2-r2 \
+		py-cryptography=2.6.1-r1 \
 		py2-pip=18.1-r0 \
-		py-setuptools=40.6.3-r0 \
+		py-setuptools=40.8.0-r1 \
 		sshpass \
 		tar \
 		&& \
