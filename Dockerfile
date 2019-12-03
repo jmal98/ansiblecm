@@ -23,13 +23,14 @@ RUN apk add --no-cache \
 		gcc \
 		make \
 		&& \
-	pip3 install --upgrade pip==19.1.1 && \
+	pip3 install --upgrade pip==19.3.1 && \
 	pip install \
 		ansible==2.9.1 \
-		botocore==1.12.110 \
+		botocore==1.13.30 \
 		boto==2.49.0 \
-		boto3==1.9.110 \
-		awscli==1.16.120 \
+		PyYAML==5.1.2 \
+		boto3==1.10.30 \
+		awscli==1.16.294 \
 		pywinrm[kerberos]==0.3.0 \
 		&& \
 	apk del build-dependencies \
