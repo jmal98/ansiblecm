@@ -20,10 +20,10 @@ RUN apk add --no-cache \
 		sshpass \
 		tar \
 		&& \
-    apk add --no-cache --virtual build-dependencies \
+	apk add --no-cache --virtual build-dependencies \
 		gcc \
 		make \
-	    && \
+		&& \
 	pip install --upgrade pip==19.1.1 && \
 	pip install \
 		ansible==2.9.1 \
@@ -35,7 +35,7 @@ RUN apk add --no-cache \
 		&& \
 	apk del build-dependencies \
 		&& \
-        rm -rf /root/.cache
+	rm -rf /root/.cache
 
 VOLUME ["/tmp/playbook"]
 
