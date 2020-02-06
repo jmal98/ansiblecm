@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 RUN apk add --no-cache \
 		bzip2 \
@@ -12,30 +12,30 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python2-dev=2.7.16-r1 \
-		py-cffi \
-		py-cryptography=2.4.2-r2 \
-		py2-pip=18.1-r0 \
-		py-setuptools=40.6.3-r0 \
+		python3-dev=3.7.5-r1 \
+		py3-cffi \
+		py3-cryptography=2.6.1-r1 \
+		py3-setuptools=40.8.0-r1 \
 		sshpass \
 		tar \
 		&& \
-    apk add --no-cache --virtual build-dependencies \
+	apk add --no-cache --virtual build-dependencies \
 		gcc \
 		make \
-	    && \
-	pip install --upgrade pip==19.1.1 && \
+		&& \
+	pip3 install --upgrade pip==19.3.1 && \
 	pip install \
 		ansible==2.9.1 \
-		botocore==1.12.110 \
+		botocore==1.13.30 \
 		boto==2.49.0 \
-		boto3==1.9.110 \
-		awscli==1.16.120 \
+		PyYAML==5.1.2 \
+		boto3==1.10.30 \
+		awscli==1.16.294 \
 		pywinrm[kerberos]==0.3.0 \
 		&& \
 	apk del build-dependencies \
 		&& \
-        rm -rf /root/.cache
+	rm -rf /root/.cache
 
 VOLUME ["/tmp/playbook"]
 
