@@ -11,8 +11,8 @@ cd ansiblecm/demo/machine
 docker build --tag machine .
 ```
 
-The resulting Docker image is a CentOS 7 machine with a single user allowing ssh access.  With the image, we will start a few web machines 
-and one database machine. 
+The resulting Docker image is a CentOS 7 machine with a single user allowing ssh access.  With the image, we will start a few web machines
+and one database machine.
 
 ```bash
 docker run -d --rm -p 22 -p 8080:8080 --name web1 machine
@@ -24,7 +24,7 @@ docker run -d --rm -p 22 -p 27017:27017 --name db1 machine
 
 Each web machine will be running a web server, but at this point, it is not installed as verified by browsing to their exposed host port on [http://localhost:8080](http://localhost:8080)
 
-The database machine will be running MongoDB, but at this point it is not installed yet as verified by browsing to its' 
+The database machine will be running MongoDB, but at this point it is not installed yet as verified by browsing to its'
 exposed host port on [http://localhost:27017](http://localhost:27017)
 
 
@@ -44,7 +44,11 @@ To demonstrate the use of an ansible one liner, let's install Java 8 on just the
 this could take 2 minutes or so.  The install will prompt you for the password of the centos user which is simply **centos**.
 
 ```bash
+<<<<<<< HEAD
 docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.3 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
+=======
+docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.4 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
+>>>>>>> b5bd0f4e539d333fb14a4f07cb76e0892b46e838
 ```
 
 To prove that java was installed on the web machines, let's run below which should show the version of java installed on web1.
@@ -53,11 +57,11 @@ To prove that java was installed on the web machines, let's run below which shou
 docker exec -it web1 java -version
 ```
 
-Now, let's invoke the full playbook which will install the web server and MongoDB on the machines.  Depending on your network speed 
+Now, let's invoke the full playbook which will install the web server and MongoDB on the machines.  Depending on your network speed
 this could take 5 minutes or so.  Again, the execution of the playbook will prompt you for the password of the centos user which is **centos**.
 
 ```bash
-docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.3 site.yml -i inventory/hosts -k
+docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.4 site.yml -i inventory/hosts -k
 ```
 
 If all goes well the web machines will be running a web server, which is accessible via their exposed host ports.
@@ -70,7 +74,7 @@ Also, MongoDB should be up and it's status should be accessible via it's exposed
 
 
 That's it.  You just used the control machine to install a typical web stack with a NoSQL MongoDB database.  Feel free to play around
-with the playbook and iterate changes on the machines. 
+with the playbook and iterate changes on the machines.
 
 
 When you're ready to shutdown the machines:
@@ -81,4 +85,3 @@ docker rm -fv web1 web2 web3 db1
 
 
 Enjoy.
-
