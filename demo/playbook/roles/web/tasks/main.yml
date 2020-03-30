@@ -1,22 +1,22 @@
 ---
   - yum:
-      name: ['which','java-1.8.0-openjdk-headless']
+      name: ['which','java-1.8.0-openjdk-headless', 'unzip']
       state: present
-      
-  
+
+
   - get_url:
-      url: http://central.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.8.v20171121/jetty-distribution-9.4.8.v20171121.tar.gz
-      dest: /opt/jetty-distribution-9.4.8.v20171121.tar.gz
+      url: https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.27.v20200227/jetty-distribution-9.4.27.v20200227.zip
+      dest: /opt/jetty-distribution-9.4.27.v20200227.zip
       mode: 0444
       owner: root
       group: root
-      checksum: sha1:0cd41bb662b58b5394b22f6df7873aee4d094d0a
-      
+      checksum: sha1:b2867ed1b6361cce6b4082e50e1e7c912fa380ae
+
   - unarchive:
-      src: /opt/jetty-distribution-9.4.8.v20171121.tar.gz
+      src: /opt/jetty-distribution-9.4.27.v20200227.zip
       dest: /opt/
       remote_src: yes
-      
+
   - lineinfile:
       path: /etc/default/jetty
       line: 'JAVA_HOME=/usr/lib/jvm'
@@ -25,27 +25,27 @@
       mode: 0644
       owner: root
       group: root
-      
+
   - lineinfile:
       path: /etc/default/jetty
-      line: 'JETTY_HOME=/opt/jetty-distribution-9.4.8.v20171121'
+      line: 'JETTY_HOME=/opt/jetty-distribution-9.4.27.v20200227'
       insertbefore: EOF
       create: yes
       mode: 0644
       owner: root
       group: root
-      
-  - command: /bin/cp -r /opt/jetty-distribution-9.4.8.v20171121/demo-base/webapps/ROOT /opt/jetty-distribution-9.4.8.v20171121/webapps/.
+
+  - command: /bin/cp -r /opt/jetty-distribution-9.4.27.v20200227/demo-base/webapps/ROOT /opt/jetty-distribution-9.4.27.v20200227/webapps/.
     args:
-      creates: /opt/jetty-distribution-9.4.8.v20171121/webapps/ROOT
-      
+      creates: /opt/jetty-distribution-9.4.27.v20200227/webapps/ROOT
+
   - file:
-      path: /opt/jetty-distribution-9.4.8.v20171121
+      path: /opt/jetty-distribution-9.4.27.v20200227
       owner: root
       group: root
       state: directory
       recurse: yes
-      
-  - shell: nohup /opt/jetty-distribution-9.4.8.v20171121/bin/jetty.sh start &
+
+  - shell: nohup /opt/jetty-distribution-9.4.27.v20200227/bin/jetty.sh start &
     args:
-      chdir: /opt/jetty-distribution-9.4.8.v20171121/
+      chdir: /opt/jetty-distribution-9.4.27.v20200227/
