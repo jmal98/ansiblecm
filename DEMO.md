@@ -47,7 +47,7 @@ this could take 2 minutes or so.  The install will prompt you for the password o
 <<<<<<< HEAD
 docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.3 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
 =======
-docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.6 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
+docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.7 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
 >>>>>>> b5bd0f4e539d333fb14a4f07cb76e0892b46e838
 ```
 
@@ -61,7 +61,7 @@ Now, let's invoke the full playbook which will install the web server and MongoD
 this could take 5 minutes or so.  Again, the execution of the playbook will prompt you for the password of the centos user which is **centos**.
 
 ```bash
-docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.6 site.yml -i inventory/hosts -k
+docker run -it --rm -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.7 site.yml -i inventory/hosts -k
 ```
 
 If all goes well the web machines will be running a web server, which is accessible via their exposed host ports.
