@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.12
 
 RUN apk add --no-cache \
 		bzip2 \
@@ -12,10 +12,10 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python3-dev=3.7.5-r1 \
+		python3-dev=3.8.3-r0 \
 		py3-cffi \
-		py3-cryptography=2.6.1-r1 \
-		py3-setuptools=40.8.0-r1 \
+		py3-cryptography=2.9.2-r0 \
+		py3-setuptools=47.0.0-r0 \
 		sshpass \
 		tar \
 		&& \
@@ -23,15 +23,16 @@ RUN apk add --no-cache \
 		gcc \
 		make \
 		&& \
-	pip3 install --upgrade pip==19.3.1 && \
-	pip install \
-		ansible==2.9.7 \
-		botocore==1.13.30 \
+	python3 -m ensurepip --upgrade \
+	  && \
+	pip3 install \
+		ansible==2.9.8 \
+		botocore==1.16.20 \
 		boto==2.49.0 \
-		PyYAML==5.1.2 \
-		boto3==1.10.30 \
-		awscli==1.16.294 \
-		pywinrm[kerberos]==0.3.0 \
+		PyYAML==5.3.1 \
+		boto3==1.13.20 \
+		awscli==1.18.70 \
+		pywinrm[kerberos]==0.4.1 \
 		&& \
 	apk del build-dependencies \
 		&& \
