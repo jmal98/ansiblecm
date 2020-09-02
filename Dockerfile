@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python3-dev=3.8.3-r0 \
+		python3-dev=3.8.5-r0 \
 		py3-cffi \
 		py3-cryptography=2.9.2-r0 \
 		py3-setuptools=47.0.0-r0 \
@@ -26,7 +26,7 @@ RUN apk add --no-cache \
 	python3 -m ensurepip --upgrade \
 	  && \
 	pip3 install \
-		ansible==2.9.10 \
+		ansible==2.9.11 \
 		botocore==1.16.20 \
 		boto==2.49.0 \
 		PyYAML==5.3.1 \
