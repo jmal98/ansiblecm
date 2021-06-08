@@ -1,4 +1,4 @@
-# Skynet Labs Note
+# Skynet Labs Notes
 
 Skynet Labs Ansible Control Machine is based on
 https://github.com/jmal98/ansiblecm with additional tools (git, docker SDK for
