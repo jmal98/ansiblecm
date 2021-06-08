@@ -1,3 +1,23 @@
+# Skynet Labs Note
+
+Skynet Labs Ansible Control Machine is based on
+https://github.com/jmal98/ansiblecm with additional tools (git, docker SDK for
+Python, lastpass-cli) installed.
+
+Usage:
+
+`$cmd` is ansible command e.g.: `ansible`, `ansible-playbook` or `ansible-galaxy`.  
+`$args` are ansible command arguments.
+
+```bash
+docker run -it --rm \
+  --entrypoint $cmd \
+  -v $(pwd):/tmp/playbook:Z \
+  -v ~/.ssh:/root/.ssh:ro \
+  skynetlabs/ansiblecm \
+  $args
+```
+
 # Ansible Control Machine (Docker'ized)
 
 A Docker based Ansible control machine useful for running playbooks with a consistent environment.  Other similar images look to build the software items into a Docker image using Ansible, or automate the creation of a control machine, but what I wanted is to be able to run Ansible playbooks consistently using an immutable environment.
