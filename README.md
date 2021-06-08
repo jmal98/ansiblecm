@@ -1,8 +1,15 @@
-# Skynet Labs Note
+# Skynet Labs Notes
 
 Skynet Labs Ansible Control Machine is based on
 https://github.com/jmal98/ansiblecm with additional tools (git, docker SDK for
 Python, lastpass-cli) installed.
+
+To run original tests before releasing a new image:
+```bash
+cd test
+./ansiblecm_tester
+```
+Use `centos` when asked for SSH password to connect to test machines.
 
 Usage:
 
