@@ -11,6 +11,7 @@ RUN apk add --no-cache \
 		krb5-libs \
 		musl-dev \
 		openssh \
+		openssl \
 		openssl-dev \
 		python3-dev=3.8.10-r0 \
 		py3-cffi \
