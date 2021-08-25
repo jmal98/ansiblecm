@@ -36,6 +36,7 @@ RUN apk add --no-cache \
 		boto3==1.17.32 \
 		awscli==1.19.32 \
 		pywinrm[kerberos]==0.4.1 \
+		semver==2.13.0 \
 		docker \
 		&& \
 	apk del build-dependencies \
