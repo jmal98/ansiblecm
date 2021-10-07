@@ -21,6 +21,7 @@ RUN apk add --no-cache \
 		tar \
 		git \
 		lastpass-cli \
+		rsync \
 		&& \
 	apk add --no-cache --virtual build-dependencies \
 		gcc \
