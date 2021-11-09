@@ -26,13 +26,13 @@ RUN apk add --no-cache \
 	python3 -m ensurepip --upgrade \
 		&& \
 	pip3 install \
-		ansible==3.2.0 \
-		botocore==1.21.38 \
+		ansible==4.8.0 \
+		botocore==1.23.1 \
 		boto==2.49.0 \
 		PyYAML==5.4.1 \
-		boto3==1.18.38 \
-		awscli==1.20.38 \
-		pywinrm[kerberos]==0.4.1 \
+		boto3==1.20.0 \
+		awscli==1.22.1 \
+		pywinrm[kerberos]==0.4.2 \
 		&& \
 	apk del build-dependencies \
 		&& \
