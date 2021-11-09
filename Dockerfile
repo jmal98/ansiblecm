@@ -1,4 +1,4 @@
-FROM alpine:3.13.6
+FROM alpine:3.14.2
 
 RUN apk add --no-cache \
 		bzip2 \
@@ -12,10 +12,10 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python3-dev=3.8.10-r0 \
+		python3-dev=3.9.5-r1 \
 		py3-cffi \
-		py3-cryptography=3.3.2-r0 \
-		py3-setuptools=51.3.3-r0 \
+		py3-cryptography=3.3.2-r1 \
+		py3-setuptools=52.0.0-r3 \
 		sshpass \
 		tar \
 		&& \
