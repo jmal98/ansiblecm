@@ -63,6 +63,8 @@ workflows:
     jobs:
       - build:
           filters:
+            tags:
+              only: /\d*/
             branches:
               only:
                 - master
