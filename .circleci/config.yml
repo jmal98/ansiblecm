@@ -45,7 +45,7 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             docker images
-            echo "${TKN}" | docker login -u "${TKN_U}" --password-stdin
+            echo "${TKN}" | docker login --username "${TKN_U}" --password-stdin
             echo docker push ${IMAGE_NAME}:${VERSION}
 
 # Invoke jobs via workflows
