@@ -64,7 +64,7 @@ workflows:
       - build:
           filters:
             tags:
-              only: /\d*/
+              only: /^\d*.*/
             branches:
               only:
                 - master
@@ -73,7 +73,7 @@ workflows:
             - build
           filters:
             tags:
-              only: /\d*/
+              only: /^\d*.*/
             branches:
               only:
                 - master
