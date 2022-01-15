@@ -71,7 +71,7 @@ workflows:
             - build
           filters:
             tags:
-              only: /^[0-9].*/
+              only: /^\d.*/
             branches:
               only:
                 - master
