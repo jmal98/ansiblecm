@@ -19,7 +19,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: "Build Docker Image"
+          name: Build Docker Image
           command:  |
             VERSION="$(grep "ansible==" Dockerfile | awk -F'==' '{print $2}' | awk '{print $1}')"
             echo "VERSION=(${VERSION})"
@@ -39,7 +39,7 @@ jobs:
           at: /tmp/workspace
       - setup_remote_docker
       - run:
-          name: Load archived Docker image
+          name: Load Archived Docker image
           command: docker load -i /tmp/workspace/image.tar
       - run:
           name: Publish Docker Image to Docker Hub
@@ -50,7 +50,7 @@ jobs:
             echo "${TKN}" | docker login --username "${TKN_U}" --password-stdin
             docker push ${IMAGE_NAME}:${VERSION}
 
-            if [ "${CIRCLE_BRANCH}" == "circleci-project-setup" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker tag ${IMAGE_NAME}:${VERSION} ${IMAGE_NAME}
               docker push ${IMAGE_NAME}
             fi
@@ -66,12 +66,12 @@ workflows:
             branches:
               only:
                 - master
-                - circleci-project-setup
       - publish-latest:
           requires:
             - build
           filters:
+            tags:
+              only: /^[0-9].*/
             branches:
               only:
                 - master
-                - circleci-project-setup
