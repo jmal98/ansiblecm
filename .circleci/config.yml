@@ -44,9 +44,9 @@ jobs:
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            VERSION="$(grep "ansible==" Dockerfile | awk -F'==' '{print $2}' | awk '{print $1}')"
-            echo "VERSION=(${VERSION})"
             docker images
+            VERSION="$(docker images --format "{{.Tag}}" jmal98/* )"
+            echo "VERSION=(${VERSION})"
             echo "${TKN}" | docker login --username "${TKN_U}" --password-stdin
             docker push ${IMAGE_NAME}:${VERSION}
 
