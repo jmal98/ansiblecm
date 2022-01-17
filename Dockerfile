@@ -26,7 +26,7 @@ RUN apk add --no-cache \
 	python3 -m ensurepip --upgrade \
 	  && \
 	pip3 install \
-		ansible==4.5.0 \
+		ansible==4.6.0 \
 		botocore==1.21.38 \
 		boto==2.49.0 \
 		PyYAML==5.4.1 \
