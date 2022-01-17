@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 		musl-dev \
 		openssh \
 		openssl-dev \
-		python3-dev=3.9.5-r1 \
+		python3-dev=3.9.5-r2 \
 		py3-cffi \
 		py3-cryptography=3.3.2-r1 \
 		py3-setuptools=52.0.0-r3 \
