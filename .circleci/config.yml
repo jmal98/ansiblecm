@@ -48,11 +48,12 @@ jobs:
             VERSION="$(docker images --format "{{.Tag}}" jmal98/* )"
             echo "VERSION=(${VERSION})"
             echo "${TKN}" | docker login --username "${TKN_U}" --password-stdin
-            docker push ${IMAGE_NAME}:${VERSION}
 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker tag ${IMAGE_NAME}:${VERSION} ${IMAGE_NAME}
               docker push ${IMAGE_NAME}
+            else
+              docker push ${IMAGE_NAME}:${VERSION}
             fi
 
 # Invoke jobs via workflows
