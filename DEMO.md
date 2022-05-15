@@ -44,11 +44,7 @@ To demonstrate the use of an ansible one liner, let's install Java 8 on just the
 this could take 2 minutes or so.  The install will prompt you for the password of the centos user which is simply **centos**.
 
 ```bash
-<<<<<<< HEAD
-docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:2.9.3 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
-=======
 docker run -it --rm --entrypoint ansible -v $PWD/demo/playbook:/tmp/playbook:Z jmal98/ansiblecm:5.5.0 web -m yum -a 'name=java-1.8.0-openjdk-headless state=present'  -i inventory/hosts -u centos -k -b
->>>>>>> b5bd0f4e539d333fb15.5.07cb76e0892b46e838
 ```
 
 To prove that java was installed on the web machines, let's run below which should show the version of java installed on web1.
