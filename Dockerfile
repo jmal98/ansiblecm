@@ -36,6 +36,7 @@ RUN apk add --no-cache \
 		PyYAML==5.4.1 \
 		boto3==1.17.32 \
 		awscli==1.19.32 \
+		hvac==0.11.2 \
 		pywinrm[kerberos]==0.4.1 \
 		semver==2.13.0 \
 		docker \
