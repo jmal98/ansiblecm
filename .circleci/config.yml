@@ -1,0 +1,80 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: jmal98/ansiblecm
+    docker:
+      - image: cimg/base:stable
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  build:
+    executor: docker-publisher
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker Image
+          command:  |
+            VERSION="$(grep "ansible==" Dockerfile | awk -F'==' '{print $2}' | awk '{print $1}')"
+            echo "VERSION=(${VERSION})"
+            docker build --tag ${IMAGE_NAME}:${VERSION} .
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+
+  publish-latest:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load Archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            docker images
+            VERSION="$(docker images --format "{{.Tag}}" jmal98/* )"
+            echo "VERSION=(${VERSION})"
+            echo "${TKN}" | docker login --username "${TKN_U}" --password-stdin
+
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag ${IMAGE_NAME}:${VERSION} ${IMAGE_NAME}
+              docker push ${IMAGE_NAME}
+            else
+              docker push ${IMAGE_NAME}:${VERSION}
+            fi
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  version: 2.1
+  build-master:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^\d*.*/
+            branches:
+              only:
+                - master
+      - publish-latest:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^\d*.*/
+            branches:
+              only:
+                - master
