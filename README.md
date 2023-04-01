@@ -19,7 +19,7 @@ Basically, this control machine can be run anywhere you can run a Docker contain
 ## Build
 
 ```bash
-docker build --tag ansiblecm:6.3.0 .
+docker build --tag ansiblecm:6.4.0 .
 ```
 
 ## Usage
@@ -30,21 +30,21 @@ By default, this control machine will assume the execution of an Ansible playboo
 to run, simply map the playbook into the container like so:
 
 ```bash
-docker run -it --rm -v <absolute path to playbook>:/tmp/playbook:Z jmal98/ansiblecm:6.3.0 <playbook arguments>
+docker run -it --rm -v <absolute path to playbook>:/tmp/playbook:Z jmal98/ansiblecm:6.4.0 <playbook arguments>
 ```
 
 
 For example, the following will run the playbook in the current directory.
 
 ```bash
-docker run -it --rm -v $PWD:/tmp/playbook:Z jmal98/ansiblecm:6.3.0 site.yml -i inventory/hosts
+docker run -it --rm -v $PWD:/tmp/playbook:Z jmal98/ansiblecm:6.4.0 site.yml -i inventory/hosts
 ```
 
 
 This control machine is also useful for running Ansible "[one liners](http://docs.ansible.com/ansible/latest/intro_adhoc.html)" which do not require a playbook.  The example below runs the setup module on the web machines as specified in the inventory file.
 
 ```bash
-docker run -it --rm --entrypoint ansible jmal98/ansiblecm:6.3.0 web -m setup -i inventory
+docker run -it --rm --entrypoint ansible jmal98/ansiblecm:6.4.0 web -m setup -i inventory
 ```
 
 ## Demo
