@@ -26,7 +26,7 @@ RUN apk add --no-cache \
 	python3 -m ensurepip --upgrade \
 		&& \
 	pip3 install \
-		ansible==8.6.1 \
+		ansible==8.7.0 \
 		botocore==1.31.44 \
 		boto3==1.28.44 \
 		awscli==1.29.44 \
